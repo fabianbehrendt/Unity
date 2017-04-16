@@ -31,7 +31,9 @@ sysinfo.txt
 
 # Builds
 *.apk
+*.exe
 *.unitypackage
+*/*[Dd]ata*/
 
 # Unity Tutorials
 /*[Tt]utorial*/
