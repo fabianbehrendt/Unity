@@ -85,4 +85,17 @@ public class BallController : MonoBehaviour
     {
         return (ballPos.y - racketPos.y) / racketHeight;
     }
+
+
+    public void StopBall()
+    {
+        direction = ball.velocity.normalized;
+        ball.velocity = Vector3.zero;
+    }
+
+
+    public void ResumeBall()
+    {
+        ball.velocity = direction * speed;
+    }
 }

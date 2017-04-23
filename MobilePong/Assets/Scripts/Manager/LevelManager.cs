@@ -14,8 +14,11 @@ public class LevelManager : MonoBehaviour
     public Text scoreLeftPlayerText;
     public Text scoreRightPlayerText;
     public GameObject roundInfoPanel;
+    public GameObject pauseMenuPanel;
+#if UNITY_STANDALONE
     public GameObject leftPlayer;
     public GameObject rightPlayer;
+#endif
     public GameObject ball;
 
 
@@ -25,6 +28,10 @@ public class LevelManager : MonoBehaviour
     private int scoreRightPlayer = 0;
     private int endScore = 5;
     private int roundNumber = 0;
+    private bool ballStopped = false;
+#if UNITY_ANDROID || UNITY_IOS
+    private TouchInputManager touchControls;
+#endif
 
 
     private void Awake()
@@ -33,20 +40,30 @@ public class LevelManager : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (pauseMenuPanel.activeSelf && !ballStopped)
+        {
+            ball.GetComponent<BallController>().StopBall();
+            ballStopped = true;
+        }
+        else if (!pauseMenuPanel.activeSelf && ballStopped)
+        {
+            ball.GetComponent<BallController>().ResumeBall();
+            ballStopped = false;
+        }
+    }
+
+
     private void Start()
     {
         SetScore();
 
+#if UNITY_ANDROID || UNITY_IOS
+        touchControls = GetComponent<TouchInputManager>();
+#endif
+
         StartCoroutine(GameLoop());
-    }
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
     }
 
 
@@ -137,8 +154,12 @@ public class LevelManager : MonoBehaviour
 
     private void EnableControl()
     {
+#if UNITY_STANDALONE
         leftPlayer.GetComponent<PlayerController>().enabled = true;
         rightPlayer.GetComponent<PlayerController>().enabled = true;
+#elif UNITY_ANDROID || UNITY_IOS
+        touchControls.enabled = true;
+#endif
 
         ball.GetComponent<BallController>().enabled = true;
     }
@@ -146,8 +167,12 @@ public class LevelManager : MonoBehaviour
 
     private void DisableControl()
     {
+#if UNITY_STANDALONE
         leftPlayer.GetComponent<PlayerController>().enabled = false;
         rightPlayer.GetComponent<PlayerController>().enabled = false;
+#elif UNITY_ANDROID || UNITY_IOS
+        touchControls.enabled = false;
+#endif
 
         ball.GetComponent<BallController>().enabled = false;
     }

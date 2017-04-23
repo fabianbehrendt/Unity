@@ -12,12 +12,20 @@ public class MenuManager : MonoBehaviour
     public Toggle toggleMedium;
     public Toggle toggleHard;
 
+#if UNITY_STANDALONE
+    public GameObject buttonQuitPrefab;
+#endif
+
 
     private void Start()
     {
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
 
+#if UNITY_STANDALONE
+        Button buttonQuit = Instantiate(buttonQuitPrefab, mainMenu.transform).GetComponent<Button>();
+        buttonQuit.onClick.AddListener(OnClickClose);
+#endif
 
         switch (GameManager.Instance.Difficulty)
         {
@@ -65,6 +73,12 @@ public class MenuManager : MonoBehaviour
     {
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
+    }
+
+
+    public void OnClickClose()
+    {
+        Application.Quit();
     }
 
 

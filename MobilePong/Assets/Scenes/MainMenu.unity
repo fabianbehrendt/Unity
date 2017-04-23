@@ -533,6 +533,8 @@ MonoBehaviour:
   toggleEasy: {fileID: 1086172124}
   toggleMedium: {fileID: 786743646}
   toggleHard: {fileID: 37757772}
+  buttonQuitPrefab: {fileID: 1002952623064584, guid: 12a25937c17542746b221eb0fc6c1779,
+    type: 2}
 --- !u!4 &403628699
 Transform:
   m_ObjectHideFlags: 0
