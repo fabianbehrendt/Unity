@@ -20,11 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4591057858171876}
   - component: {fileID: 54785859560220064}
+  - component: {fileID: 136819353056424096}
   - component: {fileID: 195551220209182154}
   - component: {fileID: 114351035076624082}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4396469491397836}
   - component: {fileID: 33199221639306744}
-  - component: {fileID: 65701934902247786}
   - component: {fileID: 23980787456924640}
   m_Layer: 0
   m_Name: Glasses
@@ -56,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4196237595897422}
   - component: {fileID: 33494627086643806}
-  - component: {fileID: 136576742914217420}
   - component: {fileID: 23541764098275826}
   m_Layer: 0
   m_Name: Body
@@ -97,8 +96,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1347969476177504}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0.5, z: -7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7, y: 0.5, z: -4}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4196237595897422}
@@ -199,18 +198,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!65 &65701934902247786
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355545271287064}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114351035076624082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,12 +210,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
---- !u!136 &136576742914217420
+--- !u!136 &136819353056424096
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1357743796516162}
+  m_GameObject: {fileID: 1347969476177504}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
