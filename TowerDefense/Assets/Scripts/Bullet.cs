@@ -18,7 +18,10 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         if (destination == null)
+        {
             Destroy(gameObject);
+            return;
+        }
 
         bullet.velocity = transform.forward * speed;
 

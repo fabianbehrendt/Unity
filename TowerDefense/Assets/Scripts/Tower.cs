@@ -8,9 +8,9 @@ public class Tower : MonoBehaviour
     public Transform barrelEnd;
 
 
-    private float shootingSpeed = .5f;
+    private float shootingSpeed = 2f;
     private float turnSpeed = 20f;
-    private float range = 10f;
+    private float range = 4f;
     private float lastTimeShot;
     private Transform enemy;
     private List<Transform> enemiesInRange = new List<Transform>();

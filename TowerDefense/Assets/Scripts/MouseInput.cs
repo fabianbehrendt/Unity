@@ -35,8 +35,9 @@ public class MouseInput : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(clickedLocation);
+            int layerMask = 1 << LayerMask.NameToLayer("Tiles");
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
                 if (hit.transform.name == "Tile")
                 {
