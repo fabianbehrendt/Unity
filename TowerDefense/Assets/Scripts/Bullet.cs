@@ -17,6 +17,9 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (destination == null)
+            Destroy(gameObject);
+
         bullet.velocity = transform.forward * speed;
 
         Quaternion targetRotation = Quaternion.LookRotation(destination.position - transform.position);

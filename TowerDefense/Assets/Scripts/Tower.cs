@@ -3,16 +3,17 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public GameObject rotatable;
     public GameObject bulletPrefab;
+    public Transform rotatable;
     public Transform barrelEnd;
 
 
-    private float shootingSpeed = 2f;
-    private float range = 4f;
+    private float shootingSpeed = .5f;
+    private float turnSpeed = 20f;
+    private float range = 10f;
     private float lastTimeShot;
-    private GameObject enemy;
-    private List<GameObject> enemiesInRange = new List<GameObject>();
+    private Transform enemy;
+    private List<Transform> enemiesInRange = new List<Transform>();
 
 
     private void Awake()
@@ -24,9 +25,7 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(enemiesInRange.Count);
-
-        foreach (GameObject enemyInRange in enemiesInRange)
+        foreach (Transform enemyInRange in enemiesInRange)
         {
             if (enemy == null)
             {
@@ -37,9 +36,10 @@ public class Tower : MonoBehaviour
         if (enemy == null)
             return;
 
-        rotatable.transform.LookAt(new Vector3(enemy.transform.position.x, rotatable.transform.position.y, enemy.transform.position.z));
+        Quaternion targetRotation = Quaternion.LookRotation(enemy.position - rotatable.position);
+        rotatable.rotation = Quaternion.RotateTowards(rotatable.rotation, targetRotation, turnSpeed);
 
-        if (Time.time - lastTimeShot >= shootingSpeed)
+        if (Time.time - lastTimeShot >= shootingSpeed && Quaternion.Angle(rotatable.rotation, targetRotation) < 5f)
         {
             lastTimeShot = Time.time;
 
@@ -52,7 +52,7 @@ public class Tower : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
-            enemiesInRange.Add(other.gameObject);
+            enemiesInRange.Add(other.transform);
     }
 
 
@@ -60,7 +60,7 @@ public class Tower : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            enemiesInRange.Remove(other.gameObject);
+            enemiesInRange.Remove(other.transform);
 
             if (enemy == other.gameObject)
                 enemy = null;
