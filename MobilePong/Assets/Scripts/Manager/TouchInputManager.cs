@@ -14,6 +14,9 @@ public class TouchInputManager : MonoBehaviour
 
         for (int i = 0; i < myTouches.Length; i++)
         {
+            if (myTouches[i].fingerId > 1)
+                continue;
+
             if (myTouches[i].phase == TouchPhase.Began)
             {
                 RaycastHit hit;

@@ -1116,8 +1116,8 @@ MonoBehaviour:
   scoreRightPlayerText: {fileID: 840909613}
   roundInfoPanel: {fileID: 1114498374}
   pauseMenuPanel: {fileID: 1416239600}
-  leftPlayer: {fileID: 769101867}
-  rightPlayer: {fileID: 605977095}
+  leftPlayer: {fileID: 0}
+  rightPlayer: {fileID: 0}
   ball: {fileID: 1510166090}
 --- !u!114 &1092316722
 MonoBehaviour:
@@ -1130,8 +1130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42b6ed7472ce15459027cdf8f27f936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLeftPos: {fileID: 769101868}
-  playerRightPos: {fileID: 605977096}
 --- !u!1 &1114498374
 GameObject:
   m_ObjectHideFlags: 0

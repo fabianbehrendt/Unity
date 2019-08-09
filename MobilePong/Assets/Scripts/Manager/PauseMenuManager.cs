@@ -16,17 +16,17 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_STANDALONE
+        //#if UNITY_STANDALONE
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ShowPauseMenu();
-        }
+        }/*
 #elif UNITY_ANDROID || UNITY_IOS
         if (Input.touchCount == 5)
         {
             ShowPauseMenu();
         }
-#endif
+#endif*/
     }
 
 
